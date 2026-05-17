@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andalucía 2026 — A Guide for Denise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f7f3ec;--sand:#ede8df;--dark:#191714;--mid:#5c5650;--light:#a09890;
+  --border:rgba(0,0,0,0.09);--gold:#b08030;--gold-light:#e8d5a8;--gold-pale:#f5edd8;
+  --teal:#2b5456;--teal-light:#e2eded;--rust:#8c3a1e;--rust-light:#f5e8e3;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--dark);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;max-height:860px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-img{position:absolute;inset:0;background-color:var(--teal);background-image:url('Nerja Balcon de Europa.jpeg');background-size:cover;background-position:center 35%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,4,0.88) 0%,rgba(0,0,0,0.35) 50%,rgba(0,0,0,0.15) 100%)}
+.hero-deco{position:absolute;top:-80px;right:-80px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(181,140,60,0.18)}
+.hero-deco2{position:absolute;top:-20px;right:-20px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(181,140,60,0.12)}
+.hero-content{position:relative;z-index:2;padding:3rem 2.5rem 4rem}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-light);font-weight:400;margin-bottom:1.75rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,10vw,7rem);color:#fff;line-height:0.95;font-weight:300;margin-bottom:0.15em}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero-rule{width:56px;height:1px;background:var(--gold);margin:1.75rem 0}
+.hero-sub{font-size:15px;color:rgba(255,255,255,0.62);font-weight:300;max-width:420px;line-height:1.75;margin-bottom:2.25rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:rgba(255,255,255,0.08);border:0.5px solid rgba(255,255,255,0.22);border-radius:100px;padding:5px 16px;font-size:11px;color:rgba(255,255,255,0.82);letter-spacing:0.3px}
+.chip.gold{background:rgba(181,140,60,0.25);border-color:rgba(181,140,60,0.5);color:var(--gold-light)}
+
+/* PAGE */
+.page{max-width:720px;margin:0 auto;padding:0 1.5rem 6rem}
+
+/* INTRO */
+.intro{padding:4rem 0 3rem;border-bottom:1px solid var(--border)}
+.pull{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.1rem);font-style:italic;font-weight:300;color:var(--dark);line-height:1.4;border-left:2px solid var(--gold);padding-left:1.5rem;margin-bottom:2rem}
+.intro p{font-size:15px;line-height:1.9;color:var(--mid)}
+.intro p+p{margin-top:1rem}
+
+/* LOGISTICS */
+.logistics{display:grid;grid-template-columns:repeat(4,1fr);background:var(--dark);width:100%;}
+.lc{padding:1.5rem 1.25rem;border-right:1px solid rgba(255,255,255,0.07)}
+.lc:last-child{border-right:none}
+.lc-t{font-size:9px;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);margin-bottom:0.5rem;font-weight:500}
+.lc-v{font-size:13px;color:#fff;font-weight:400;line-height:1.35}
+.lc-n{font-size:11px;color:rgba(255,255,255,0.38);margin-top:0.3rem;line-height:1.5}
+
+/* SECTION LABEL */
+.slabel{font-size:9px;text-transform:uppercase;letter-spacing:3.5px;color:var(--gold);font-weight:500;margin:4rem 0 2rem;display:flex;align-items:center;gap:1.5rem}
+.slabel::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* TIMELINE */
+.timeline{display:flex;background:#fff;border:1px solid var(--border);margin:2rem 0;overflow:hidden}
+.tl-item{flex:1;padding:1rem 0.75rem;border-right:1px solid var(--border);text-align:center}
+.tl-item:last-child{border-right:none}
+.tl-item.active{background:var(--teal)}
+.tl-date{font-size:10px;color:var(--light);margin-bottom:4px;letter-spacing:0.5px}
+.tl-item.active .tl-date{color:rgba(255,255,255,0.55)}
+.tl-city{font-size:12px;font-weight:500;color:var(--dark)}
+.tl-item.active .tl-city{color:#fff}
+.tl-nights{font-size:9px;color:var(--light);margin-top:2px}
+.tl-item.active .tl-nights{color:rgba(255,255,255,0.45)}
+
+/* DEST */
+.dest{margin-bottom:5rem}
+.dest-top{display:grid;grid-template-columns:80px 1fr;border:1px solid var(--border);margin-bottom:0;background:#fff}
+.dest-date-block{background:var(--teal);padding:1.5rem 0.75rem;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.dday{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:400;color:#fff;line-height:1}
+.dmonth{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.5);margin-top:3px}
+.dweek{font-size:8px;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold-light);margin-top:6px}
+.dest-info{padding:1.25rem 1.5rem;border-left:1px solid var(--border)}
+.dest-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4.5vw,2.6rem);font-weight:400;color:var(--dark);line-height:1;margin-bottom:0.3rem}
+.dest-sub{font-size:11px;color:var(--light);letter-spacing:0.3px;margin-bottom:0.7rem}
+.dtags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:10px;padding:2px 10px;border-radius:100px}
+.tn{background:var(--teal-light);color:var(--teal);border:0.5px solid rgba(43,84,86,0.2)}
+.td{background:var(--gold-pale);color:#7a5a15;border:0.5px solid rgba(181,140,60,0.3)}
+.ts{background:var(--rust-light);color:var(--rust);border:0.5px solid rgba(140,58,30,0.2)}
+
+/* DESTINATION PHOTO */
+.dest-photo{width:100%;height:300px;object-fit:cover;display:block;border-bottom:1px solid var(--border)}
+.dest-photo-caption{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--light);padding:0.5rem 1.5rem;background:#fff;border:1px solid var(--border);border-top:none;margin-bottom:1.5rem}
+
+/* BODY */
+.dest-body{font-size:14px;line-height:1.85;color:var(--mid);margin-bottom:1.25rem}
+
+/* STAY */
+.stay{border:1px solid var(--border);border-left:2px solid var(--teal);background:#fff;padding:1rem 1.25rem;margin:1.25rem 0}
+.stay-name{font-size:13px;font-weight:500;color:var(--dark);margin-bottom:4px}
+.stay-detail{font-size:11px;color:var(--light);line-height:1.65}
+.stay-contact{font-size:11px;color:var(--gold);margin-top:5px;font-weight:500}
+
+/* HIGHLIGHTS */
+.hl{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 1.5rem;margin:1.25rem 0}
+.hl li{font-size:12px;color:var(--mid);padding:0.4rem 0 0.4rem 1.1rem;position:relative;border-bottom:1px solid var(--border);line-height:1.55}
+.hl li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:10px;top:0.5rem}
+
+/* ALERT */
+.alert{background:var(--gold-pale);border:1px solid rgba(181,140,60,0.3);border-left:2px solid var(--gold);padding:0.9rem 1.25rem;margin:1.25rem 0;font-size:12px;color:#5a4010;line-height:1.7}
+.alert strong{font-weight:500;color:#3d2a08}
+
+/* FOOD */
+.food-section{background:var(--dark);width:100%;padding:3rem 3rem 3.5rem}
+.food-section .slabel{color:var(--gold);margin-top:0}
+.food-section .slabel::after{background:rgba(255,255,255,0.08)}
+.food-hero-img{width:100%;height:280px;object-fit:cover;display:block;margin-bottom:2rem}
+.food-intro{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3.5vw,1.75rem);font-style:italic;font-weight:300;color:rgba(255,255,255,0.8);line-height:1.5;max-width:540px;margin-bottom:2.5rem;border-left:2px solid var(--gold);padding-left:1.25rem}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem}
+.food-item{border-top:1px solid rgba(255,255,255,0.08);padding-top:1rem}
+.food-item h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;font-weight:300;color:var(--gold-light);margin-bottom:0.4rem}
+.food-item p{font-size:12px;color:rgba(255,255,255,0.48);line-height:1.65}
+.food-note-section{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.food-note h5{font-size:9px;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);font-weight:500;margin-bottom:0.75rem}
+.food-note p{font-size:12px;color:rgba(255,255,255,0.42);line-height:1.7}
+.food-note p strong{color:rgba(255,255,255,0.7);font-weight:400}
+
+/* FLAMENCO BREAK */
+.flamenco-break{position:relative;height:320px;overflow:hidden;margin:3rem 0;display:flex;align-items:flex-end;width:100%}
+.flamenco-break img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(0.5)}
+.flamenco-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 60%)}
+.flamenco-text{position:relative;z-index:2;padding:2rem 2.5rem}
+.flamenco-text h3{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3.2rem);font-style:italic;font-weight:300;color:#fff;margin-bottom:0.5rem;line-height:1}
+.flamenco-text p{font-size:13px;color:rgba(255,255,255,0.65);font-weight:300;max-width:460px;line-height:1.7}
+
+/* INTERLUDE */
+.interlude{padding:4rem 0;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:3rem 0}
+.interlude .big-q{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,3rem);font-style:italic;font-weight:300;color:var(--dark);line-height:1.35;max-width:520px;margin:0 auto 1rem}
+.interlude .attr{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--light)}
+
+/* PRACTICAL */
+.practical-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-top:1.25rem}
+.pc{background:var(--cream);padding:1.25rem}
+.pc h4{font-size:9px;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);margin-bottom:0.85rem;font-weight:500}
+.pc ul{list-style:none}
+.pc li{font-size:12px;color:var(--mid);padding:4px 0;border-bottom:1px solid var(--border);line-height:1.5}
+.pc li:last-child{border-bottom:none}
+.pc li strong{font-weight:500;color:var(--dark)}
+
+/* FOOTER */
+.footer{background:var(--dark);width:100%;padding:4rem 3rem 3rem}
+.footer-wordmark{font-family:'Cormorant Garamond',serif;font-size:3rem;font-style:italic;font-weight:300;color:var(--gold-light);display:block;margin-bottom:0.5rem;line-height:1}
+.footer-sub{font-size:11px;color:rgba(255,255,255,0.28);letter-spacing:1px;margin-bottom:2rem}
+.footer-contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.07)}
+.fc h5{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:0.5rem;font-weight:500}
+.fc p{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.65}
+.footer-bottom{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;letter-spacing:1px;color:rgba(255,255,255,0.18)}
+
+@media(max-width:560px){
+  .hero-content{padding:2rem 1.5rem 3rem}
+  .page{padding:0 1rem 4rem}
+  .logistics{grid-template-columns:1fr 1fr}
+  .lc{border-bottom:1px solid rgba(255,255,255,0.07)}
+  .lc:nth-child(even){border-right:none}
+  .hl{grid-template-columns:1fr}
+  .food-section{padding:2.5rem 1.5rem 3rem}
+  .food-note-section{grid-template-columns:1fr}
+  .footer{padding:3rem 1.5rem 2rem}
+  .dest-top{grid-template-columns:64px 1fr}
+  .timeline{display:none}
+  .dest-photo{height:220px}
+  .flamenco-break{height:240px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-deco"></div>
+  <div class="hero-deco2"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Summer 2026 &nbsp;·&nbsp; A personal guide</div>
+    <h1>Two weeks<br>in <em>Andalucía</em></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">Made for Denise — from the van Luijk family, with love. First time in Spain? You are in for something extraordinary.</p>
+    <div class="chips">
+      <span class="chip">30 July – 13 August</span>
+      <span class="chip">Roeland · Kara · Fieke · Matthijs · you</span>
+      <span class="chip">Nerja · Granada · Ronda · Fuengirola</span>
+      <span class="chip gold">14 nights · 5 destinations</span>
+    </div>
+  </div>
+</div>
+
+<!-- LOGISTICS -->
+<div class="logistics">
+  <div class="lc"><div class="lc-t">We arrive</div><div class="lc-v">Málaga Airport</div><div class="lc-n">30 July · 10:30 from Amsterdam</div></div>
+  <div class="lc"><div class="lc-t">Getting around</div><div class="lc-v">Rental car</div><div class="lc-n">We drive between cities. Car until 9 Aug.</div></div>
+  <div class="lc"><div class="lc-t">August weather</div><div class="lc-v">35–40°C</div><div class="lc-n">Sightsee early or late. Siesta 13–17:00.</div></div>
+  <div class="lc"><div class="lc-t">Money</div><div class="lc-v">Euro (€)</div><div class="lc-n">NZ$1 ≈ €0.55. Cards everywhere.</div></div>
+</div>
+
+<div class="page">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p class="pull">"Andalucía is the Spain you always imagined — and then considerably more."</p>
+    <p>This is Spain at its most vivid. Whitewashed villages tumbling down hillsides, gorges that drop a hundred metres beneath your feet, cities where Moorish palaces cast shadows over tapas bars that only open at midnight. August is peak heat, peak colour, and peak Spain. The locals don't apologise for the sun. Neither should you.</p>
+    <p>We've been planning this for months and we cannot wait to share it with you. This guide covers every stop — where we're sleeping, what to eat, what to see, and the tips that separate a good holiday from one you talk about for years.</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline" style="margin-top:2rem">
+    <div class="tl-item"><div class="tl-date">30 Jul</div><div class="tl-city">Nerja</div><div class="tl-nights">5 nights</div></div>
+    <div class="tl-item"><div class="tl-date">4 Aug</div><div class="tl-city">Granada</div><div class="tl-nights">2 nights</div></div>
+    <div class="tl-item"><div class="tl-date">6 Aug</div><div class="tl-city">Ronda</div><div class="tl-nights">2 nights</div></div>
+    <div class="tl-item"><div class="tl-date">8 Aug</div><div class="tl-city">Fuengirola</div><div class="tl-nights">5 nights</div></div>
+    <div class="tl-item"><div class="tl-date">13 Aug</div><div class="tl-city">Home</div><div class="tl-nights">checkout 11:00</div></div>
+  </div>
+
+  <div class="slabel">The journey</div>
+
+  <!-- NERJA -->
+  <div class="dest">
+    <div class="dest-top">
+      <div class="dest-date-block"><div class="dday">30</div><div class="dmonth">Jul</div><div class="dweek">Thu</div></div>
+      <div class="dest-info">
+        <h2>Nerja</h2>
+        <div class="dest-sub">Málaga Airport → Nerja &nbsp;·&nbsp; 50 min drive</div>
+        <div class="dtags"><span class="tag tn">5 nights</span><span class="tag td">50 min drive</span><span class="tag ts">Balcón de Europa</span></div>
+      </div>
+    </div>
+    <img class="dest-photo" src="Nerja Balcon de Europa.jpeg" alt="Balcón de Europa, Nerja">
+    <div class="dest-photo-caption">Balcón de Europa &nbsp;·&nbsp; Nerja, Málaga Province</div>
+    <p class="dest-body">Nerja is the Costa del Sol done right — a cliff-top town that kept its soul while the resorts around it sold theirs. The centrepiece is the Balcón de Europa: a promenade jutting out above the sea, flanked by palm trees, with views along the coastline that make you stop walking and simply stare. Go at sunset. Tonight: drop the bags, find a terrace, order something cold.</p>
+    <div class="stay">
+      <div class="stay-name">9 Amaranto — Three-Bedroom House</div>
+      <div class="stay-detail">Calle la Viña, Ave Chimenea, Nerja &nbsp;·&nbsp; Check-in 13:00 &nbsp;·&nbsp; Check-out 4 Aug 10:00<br>Self check-in — keys from the neighbour at No. 11</div>
+      <div class="stay-contact">Host: +44 1223 264811</div>
+    </div>
+    <ul class="hl">
+      <li>Balcón de Europa at sunset — the Nerja moment</li>
+      <li>Cuevas de Nerja — prehistoric caves, extraordinary</li>
+      <li>Playa Burriana — best beach in town, 10-min walk</li>
+      <li>Frigiliana — 20 min drive, Spain's most beautiful white village</li>
+      <li>Chiringuito beach bars — fried fish, cold beer, feet in the sand</li>
+      <li>The town at night — it comes alive after 21:00</li>
+    </ul>
+  </div>
+
+  <!-- GRANADA -->
+  <div class="dest">
+    <div class="dest-top">
+      <div class="dest-date-block"><div class="dday">4</div><div class="dmonth">Aug</div><div class="dweek">Tue</div></div>
+      <div class="dest-info">
+        <h2>Granada</h2>
+        <div class="dest-sub">Nerja → Granada &nbsp;·&nbsp; 1h 45min drive</div>
+        <div class="dtags"><span class="tag tn">2 nights</span><span class="tag td">1h 45min</span><span class="tag ts">Alhambra · Albaicín</span></div>
+      </div>
+    </div>
+    <img class="dest-photo" src="Alhambra Granada palace.jpg" alt="Alhambra Palace, Granada">
+    <div class="dest-photo-caption">The Alhambra &nbsp;·&nbsp; Granada, Andalucía</div>
+    <p class="dest-body">Granada hits you immediately. The Alhambra palace complex sits above the city like something from another world — 700 years of Moorish architecture, intricate geometric tilework, and gardens fed by snowmelt from the Sierra Nevada. We have tickets booked for 5 August at 09:00. Day one is for the city itself: the Albaicín, Sacromonte, and Granada's extraordinary tapas culture where every drink comes with free food.</p>
+    <div class="alert">
+      <strong>Alhambra — 5 August, 09:00 sharp for the Nasrid Palaces.</strong> This slot cannot be changed. We take the C3 bus from Plaza Nueva (5 min, €1.40). Bring your New Zealand passport — required at entry. Flat closed shoes essential — paths are cobbled and uneven. No selfie sticks or flash inside the palaces.
+    </div>
+    <div class="stay">
+      <div class="stay-name">HiRoom Smart Apartments — Penthouse</div>
+      <div class="stay-detail">13 Calle Alonso Cano 3ºA, Centro, Granada &nbsp;·&nbsp; Check-in 14:00 &nbsp;·&nbsp; Check-out 6 Aug 11:00<br>Rooftop terrace · host will call with instructions · parking nearby</div>
+      <div class="stay-contact">Host: +34 669 53 88 07</div>
+    </div>
+    <ul class="hl">
+      <li>Alhambra 5 Aug — leave apartment by 08:30</li>
+      <li>Albaicín — wander the Moorish lanes without a map</li>
+      <li>Mirador de San Nicolás — Alhambra views at golden hour</li>
+      <li>Sacromonte — cave houses, real flamenco in the evening</li>
+      <li>Free tapas with every drink — order rounds, eat for free</li>
+      <li>Calle de las Teterías — Arab tea street, mint tea, pastries</li>
+    </ul>
+  </div>
+
+  <!-- RONDA -->
+  <div class="dest">
+    <div class="dest-top">
+      <div class="dest-date-block"><div class="dday">6</div><div class="dmonth">Aug</div><div class="dweek">Thu</div></div>
+      <div class="dest-info">
+        <h2>Ronda</h2>
+        <div class="dest-sub">Granada → Ronda &nbsp;·&nbsp; 2h via Setenil de las Bodegas</div>
+        <div class="dtags"><span class="tag tn">2 nights</span><span class="tag td">2h + stops</span><span class="tag ts">Puente Nuevo · El Tajo</span></div>
+      </div>
+    </div>
+    <img class="dest-photo" src="Ronda Puente Nuevo bridge.jpg" alt="Puente Nuevo bridge, Ronda">
+    <div class="dest-photo-caption">Puente Nuevo &nbsp;·&nbsp; El Tajo Gorge, Ronda</div>
+    <p class="dest-body">Stop at Setenil de las Bodegas on the drive — a village where houses are literally built under overhanging rock cliffs. Have coffee in a bar with a cliff for a ceiling. Then Ronda: a town on a plateau split by the El Tajo gorge, a sheer 100 metres deep. The Puente Nuevo bridge spans it. Ernest Hemingway lived here. Orson Welles had his ashes scattered nearby. Stand on that bridge, look straight down, and you'll understand why.</p>
+    <div class="stay">
+      <div class="stay-name">Apartamentos Martalia Namar Centro</div>
+      <div class="stay-detail">Calle Sevilla 59, Ronda &nbsp;·&nbsp; Check-in 6 Aug &nbsp;·&nbsp; Check-out 8 Aug<br>Rooftop pool open July–Aug · 8-min walk to Puente Nuevo · parking in building</div>
+    </div>
+    <ul class="hl">
+      <li>Puente Nuevo — walk across, look straight down, feel small</li>
+      <li>Setenil de las Bodegas — coffee under a cliff (stop on drive)</li>
+      <li>Alameda del Tajo — cliff-top gardens above the gorge</li>
+      <li>Plaza de Toros — Spain's oldest bullring, now a museum</li>
+      <li>Arab Baths — 13th century, beautifully preserved</li>
+      <li>Rooftop pool — after the old town heat, this is everything</li>
+    </ul>
+  </div>
+
+  <!-- FUENGIROLA -->
+  <div class="dest">
+    <div class="dest-top">
+      <div class="dest-date-block"><div class="dday">8</div><div class="dmonth">Aug</div><div class="dweek">Sat</div></div>
+      <div class="dest-info">
+        <h2>Fuengirola</h2>
+        <div class="dest-sub">Ronda → Fuengirola &nbsp;·&nbsp; 1h 15min drive</div>
+        <div class="dtags"><span class="tag tn">5 nights</span><span class="tag td">1h 15min</span><span class="tag ts">Beach · Pool · Málaga</span></div>
+      </div>
+    </div>
+    <img class="dest-photo" src="Fuengirola beach aerial.jpg" alt="Fuengirola beach, Costa del Sol">
+    <div class="dest-photo-caption">Costa del Sol &nbsp;·&nbsp; Fuengirola, Málaga</div>
+    <p class="dest-body">Mountains to sea in just over an hour. Fuengirola is your beach base — a proper Spanish town on the coast with a long sandy beach, a seafront promenade, and all the infrastructure of a place that knows exactly what summer is for. The apartment has a pool. Use it in the hottest part of the day. The Spanish paseo along the beach at 21:00 with an ice cream is a full summer experience, worth doing every single evening.</p>
+    <div class="stay">
+      <div class="stay-name">Los Boliches — Three-Bedroom Apartment with View</div>
+      <div class="stay-detail">Av Acapulco 17, Valencia A, Piso 2F, Fuengirola &nbsp;·&nbsp; Check-in 16:00 &nbsp;·&nbsp; Check-out 13 Aug 11:00</div>
+      <div class="stay-contact">Host: +34 622 395 591 &nbsp;·&nbsp; Contact the day before to arrange arrival</div>
+    </div>
+    <ul class="hl">
+      <li>Playa de Fuengirola — long, well-serviced, easy with kids</li>
+      <li>Bioparc — outstanding immersive zoo, the kids will love it</li>
+      <li>Mijas Pueblo — 20 min inland, stunning white village</li>
+      <li>Málaga day trip — 30 min by train, Picasso Museum</li>
+      <li>Paseo Marítimo at 21:00 — the whole town out walking</li>
+      <li>Chiringuito dinners — fresh fish, sea breeze, sand underfoot</li>
+    </ul>
+  </div>
+
+  <!-- INTERLUDE -->
+  <div class="interlude">
+    <p class="big-q">"In Granada, every drink comes with a free tapa. This is not a rumour."</p>
+    <div class="attr">The best deal in Europe &nbsp;·&nbsp; Granada, Andalucía</div>
+  </div>
+
+</div>
+
+<!-- FOOD SECTION -->
+<div class="food-section">
+  <div class="page" style="padding-bottom:0">
+    <div class="slabel" style="margin-top:0">What to eat &amp; drink</div>
+    <img class="food-hero-img" src="Spanish tapas spread.jpg" alt="Spanish tapas">
+    <p class="food-intro">"Order what you don't recognise. Ask the waiter what they eat at home. That is always the right answer."</p>
+    <div class="food-grid">
+      <div class="food-item"><h4>Gazpacho</h4><p>Cold blended tomato soup. In August heat it is the most refreshing thing you will eat. Order it at every lunch, everywhere.</p></div>
+      <div class="food-item"><h4>Jamón ibérico</h4><p>Cured ham from acorn-fed pigs. Order a plate as a starter, every day. Nothing you have eaten at home is like this.</p></div>
+      <div class="food-item"><h4>Pescaíto frito</h4><p>Lightly fried fish — anchovies, squid, prawns. The Andalusian coastal specialty. Eat it at a chiringuito with cold beer.</p></div>
+      <div class="food-item"><h4>Salmorejo</h4><p>Granada's richer version of gazpacho — thick, topped with jamón and boiled egg. A full meal in a bowl. Order it in Granada.</p></div>
+      <div class="food-item"><h4>Free tapas</h4><p>In Granada, every drink comes with a free tapa. Two rounds of drinks equals two plates of food. Best deal in Europe.</p></div>
+      <div class="food-item"><h4>Churros</h4><p>Fried dough dipped in thick hot chocolate. For breakfast. Fieke and Matthijs will ask for them daily. Say yes every time.</p></div>
+    </div>
+    <div class="food-note-section">
+      <div class="food-note">
+        <h5>On wine &amp; sherry</h5>
+        <p>Andalucía is sherry country. Ask for a chilled <strong>fino or manzanilla</strong> with tapas — local, inexpensive, pairs with everything. <strong>Rioja</strong> for evenings. Sangria is for tourists but on the beach, nobody will judge.</p>
+      </div>
+      <div class="food-note">
+        <h5>When to eat</h5>
+        <p>Lunch at <strong>14:00–16:00</strong> is the main meal. Dinner starts at <strong>21:00</strong>. Before 20:30, restaurants are empty or catering only to tourists. Eat when the locals eat — always better.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLAMENCO -->
+<div class="page">
+  <div class="flamenco-break">
+    <img src="Flamenco dancer Andalusia.jpg" alt="Flamenco, Andalucía">
+    <div class="flamenco-overlay"></div>
+    <div class="flamenco-text">
+      <h3>Flamenco</h3>
+      <p>Andalucía is the birthplace of flamenco. In Sacromonte, Granada, you can watch it performed in the cave houses where it was born — raw, intense, nothing like a stage show. If you can do one thing in the evening in Granada, make it this.</p>
+    </div>
+  </div>
+
+  <div class="slabel">Good to know</div>
+  <div class="practical-grid">
+    <div class="pc">
+      <h4>Spanish time</h4>
+      <ul>
+        <li><strong>Breakfast</strong> 8–10:00 — coffee and tostada</li>
+        <li><strong>Lunch</strong> 14:00–16:00 — the main meal</li>
+        <li><strong>Siesta</strong> 14:00–17:00 — many shops close</li>
+        <li><strong>Dinner</strong> 21:00+ — don't go before this</li>
+        <li>Sundays: many shops closed in the afternoon</li>
+      </ul>
+    </div>
+    <div class="pc">
+      <h4>August survival</h4>
+      <ul>
+        <li>SPF 50 every day — no exceptions</li>
+        <li>Sightsee before 10:00 or after 17:00</li>
+        <li>Carry water always — bars will refill for free</li>
+        <li>Hat, sunglasses, light linen clothing</li>
+        <li>Air-conditioning 13–17:00 is non-negotiable</li>
+      </ul>
+    </div>
+    <div class="pc">
+      <h4>Useful Spanish</h4>
+      <ul>
+        <li>"Por favor" — please</li>
+        <li>"Gracias" — thank you</li>
+        <li>"La cuenta, por favor" — the bill</li>
+        <li>"¿Habla inglés?" — do you speak English?</li>
+        <li>"Muy rico" — delicious. Use it constantly.</li>
+      </ul>
+    </div>
+    <div class="pc">
+      <h4>Alhambra essentials</h4>
+      <ul>
+        <li>Bring your NZ passport — required at entry</li>
+        <li>Flat shoes — cobbled and uneven paths throughout</li>
+        <li>09:00 Nasrid slot is fixed — don't be late</li>
+        <li>No selfie sticks or flash inside the palaces</li>
+        <li>C3 bus from Plaza Nueva — 5 min, €1.40</li>
+      </ul>
+    </div>
+    <div class="pc">
+      <h4>Emergency contacts</h4>
+      <ul>
+        <li><strong>Emergency</strong> 112 — works across Spain</li>
+        <li><strong>Nerja host</strong> +44 1223 264811</li>
+        <li><strong>Granada host</strong> +34 669 53 88 07</li>
+        <li><strong>Fuengirola host</strong> +34 622 395 591</li>
+        <li><strong>Roeland</strong> +31 630 049 245</li>
+      </ul>
+    </div>
+    <div class="pc">
+      <h4>Getting around</h4>
+      <ul>
+        <li>We drive between cities until 9 August</li>
+        <li>Alhambra: bus C3 from Plaza Nueva</li>
+        <li>Fuengirola–Málaga train every 30 min</li>
+        <li>Taxis: cheap, easy, always available</li>
+        <li>Old town streets: walk, never drive</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="page" style="padding-bottom:0">
+    <span class="footer-wordmark">Andalucía 2026</span>
+    <div class="footer-sub">30 July – 13 August &nbsp;·&nbsp; Nerja · Granada · Ronda · Fuengirola</div>
+    <div class="footer-contacts">
+      <div class="fc"><h5>Nerja</h5><p>9 Amaranto<br>Calle la Viña, Ave Chimenea<br>+44 1223 264811</p></div>
+      <div class="fc"><h5>Granada</h5><p>HiRoom Penthouse<br>13 Calle Alonso Cano 3ºA<br>+34 669 53 88 07</p></div>
+      <div class="fc"><h5>Ronda</h5><p>Martalia Namar Centro<br>Calle Sevilla 59<br>Contact via Booking.com</p></div>
+      <div class="fc"><h5>Fuengirola</h5><p>Los Boliches<br>Av Acapulco 17, 2F<br>+34 622 395 591</p></div>
+    </div>
+    <div class="footer-bottom">Made with love for Denise &nbsp;·&nbsp; Van Luijk family &nbsp;·&nbsp; Spain 2026</div>
+  </div>
+</div>
+
+</body>
+</html>
